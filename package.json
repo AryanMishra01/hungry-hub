@@ -1,0 +1,22 @@
+{
+  "name": "hungry-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AryanMishra01/hungry-hub.git"
+  },
+  "author": "Aryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AryanMishra01/hungry-hub/issues"
+  },
+  "homepage": "https://github.com/AryanMishra01/hungry-hub#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
