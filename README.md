@@ -113,4 +113,8 @@ We can write the above code as below also:
 
 # To separate array with comma's use:
      join(", ") 
-        e.g.   <h4>{resData.info.cuisines.join(", ")}</h4>   
+        e.g.   <h4>{resData.info.cuisines.join(", ")}</h4>  
+
+# Creatd list of array of data and use the data as below:
+    e.g : <RestroCard resData ={restrolist[0]} />
+    * using above syntax we can re-iterate n numbers of data by changing the array value [1]... so on. 
