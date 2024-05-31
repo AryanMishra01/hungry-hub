@@ -17,10 +17,10 @@
  CSS:
    - Inside index.css
    - Inline style in index.html
-          e.g: <div id="root" class="root" style="width 20px"></div>
+ *         e.g: <div id="root" class="root" style="width 20px"></div>
    - Directly by using a javascript object:
             e.g: Here styleCard is JS object
-          const styleCard = {
+*          const styleCard = {
            backgroundColor: "grey"
           }
           const RestroCard = () => {
@@ -33,7 +33,7 @@
 
             or we can directly ingest it by below syntax"
                e.g:
-           const RestroCard = () => {
+*           const RestroCard = () => {
            return (
             <div className="restro-card" style={{backgroundColor: "grey"}}>
             <h3>Aryan Resturant</h3>
@@ -49,7 +49,7 @@
          e.g:  
          const RestroCard = (props) => {
     return (
-        <div className="restro-card" style={styleCard}>
+ *       <div className="restro-card" style={styleCard}>
             <img className="restro-logo" alt="restro-logo" src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"/>
             <h3>{props.resName}</h3>
             <h4>{props.cuisine}</h4>
@@ -92,9 +92,9 @@ We can write the above code as below also:
 -Destructing on the fly:
       - this is in JavaScript
       - 
-         const RestroCard = ({resName,cuisine}) => {
-    return (
-        <div className="restro-card" style={styleCard}>
+    *     const RestroCard = ({resName,cuisine}) => {
+*    return (
+*          <div className="restro-card" style={styleCard}>
             <img className="restro-logo" alt="restro-logo" src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"/>
             <h3>{resName}</h3>
             <h4>{cuisine}</h4>
@@ -127,8 +127,8 @@ We can write the above code as below also:
   * this increases the performance of app and reduces unnecessary re-rendering.
 
      e.g: 
-       {restrolist.map(restaurant => (
-             <RestroCard key={restaurant.info.id} resData = {restaurant}/> 
+      * {restrolist.map(restaurant => (
+       *      <RestroCard key={restaurant.info.id} resData = {restaurant}/> 
              ))}
 
 # index (not recommended) only use when key is not available
@@ -138,8 +138,8 @@ We can write the above code as below also:
          This will negatively impact the performance and may cause issues with the component state.
 
 
-    e.g
-       {restrolist.map(restaurant => (
-             <RestroCard key={index} resData = {restaurant}/> 
-             ))}
+    e.g : 
+   *  {restrolist.map(restaurant => (
+   *          <RestroCard key={index}  resData = {restaurant}/>
+    *        ))}
   
