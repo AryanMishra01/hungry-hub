@@ -118,3 +118,28 @@ We can write the above code as below also:
 # Creatd list of array of data and use the data as below:
     e.g : <RestroCard resData ={restrolist[0]} />
     * using above syntax we can re-iterate n numbers of data by changing the array value [1]... so on. 
+
+# key (unique key) [best practice]
+  * Always give key while passing data
+  * Doing this it will not re-render whole restrolist
+  * By providing "key" it will uniquely identify the new resturant in the retroslist
+  * Thus only render the newly added resturant, rest will not be re-rendered.
+  * this increases the performance of app and reduces unnecessary re-rendering.
+
+     e.g: 
+       {restrolist.map(restaurant => (
+             <RestroCard key={restaurant.info.id} resData = {restaurant}/> 
+             ))}
+
+# index (not recommended) only use when key is not available
+   * we can also use index instead of above acutal id. 
+   # but NEVER USE index as suggest by React docs.
+   * Because it is anti-pattern means:
+         This will negatively impact the performance and may cause issues with the component state.
+
+
+    e.g
+       {restrolist.map(restaurant => (
+             <RestroCard key={index} resData = {restaurant}/> 
+             ))}
+  

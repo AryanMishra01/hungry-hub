@@ -25,16 +25,19 @@ const styleCard = {
 
 }
 const RestroCard = (props) => {
+  //destructing 
 const {resData} = props;
-
+// conditional rendering ?.
+const {cloudinaryImageId, name, avgRating, cuisines,costForTwo } = resData?.info;
+const {deliveryTime} = resData?.info.sla
     return (
         <div className="restro-card" style={styleCard}>
-            <img className="restro-logo" alt="restro-logo" src= {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resData.info.cloudinaryImageId} />
-            <h3>{resData.info.name}</h3>
-            <h4>{resData.info.cuisines.join(", ")}</h4>
-            <h4>{resData.info.avgRating} stars</h4>
-            <h4>{resData.info.costForTwo}</h4>
-            <h4>{resData.info.sla.deliveryTime} minutes</h4>
+            <img className="restro-logo" alt="restro-logo" src= {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} />
+            <h3>{name}</h3>
+            <h4>{cuisines.join(", ")}</h4>
+            <h4>{avgRating} stars</h4>
+            <h4>{costForTwo}</h4>
+            <h4>{deliveryTime} minutes</h4>
         </div>
     );
 };
@@ -1908,35 +1911,29 @@ const restrolist = [
     }
   ]
 
-const Body = () => {
+/**using map
+  * Here we have looped over the restrolist
+  * for each restaurant we're returning a JSX i.e: RestroCard with resturant data.
+  */
+/** key:  
+     * Always give key while passing data
+     * Doing this it will not re-render whole restrolist
+     * By providing "key" it will uniquely identify the new resturant in the retroslist
+     * Thus only render the newly added resturant, rest will not be re-rendered.
+     * this increases the performance of app and reduces unnecessary re-rendering.
+     */
+const Body = () => { 
     return (
        <div className="body">
          <div className="search">Search</div>
          <div className="restro-container">
-             <RestroCard resData ={restrolist[0]} />
-             <RestroCard resData ={restrolist[1]} />
-             <RestroCard resData ={restrolist[2]} />
-             <RestroCard resData ={restrolist[3]} />
-             <RestroCard resData ={restrolist[4]} />
-             <RestroCard resData ={restrolist[5]} />
-             <RestroCard resData ={restrolist[6]} />
-             <RestroCard resData ={restrolist[7]} />
-             <RestroCard resData ={restrolist[8]} />
-             <RestroCard resData ={restrolist[9]} /> 
-             <RestroCard resData ={restrolist[10]} />
-             <RestroCard resData ={restrolist[11]} />
-             <RestroCard resData ={restrolist[12]} />
-             <RestroCard resData ={restrolist[13]} /> 
-             <RestroCard resData ={restrolist[14]} />
-             <RestroCard resData ={restrolist[15]} />
-             <RestroCard resData ={restrolist[16]} />
-             <RestroCard resData ={restrolist[17]} />
-             <RestroCard resData ={restrolist[18]} />
-             <RestroCard resData ={restrolist[19]} />
+             {restrolist.map(restaurant => (
+             <RestroCard key={restaurant.info.id} resData = {restaurant}/>
+             ))}
          </div>
        </div>
-    )  
-}
+    );  
+};
 
 
 
