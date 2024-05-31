@@ -152,13 +152,41 @@ We can write the above code as below also:
     -> When we need to export multiple things from a single file.
     -> export const Component
     -> import { CDN_URL } from "../utils/contants";
-    e.g    Contants.js
-    export const CDN_URL =
+    e.g    
+  *  Contants.js
+   ->   export const CDN_URL =
 "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 
 export const LOGO_URL = 
 "https://i.postimg.cc/VLQY49Lz/Firefly-Hungry-Hub-Food-Delivery-App-Logo-Description-Create-a-modern-and-classy-logo-for-a-food.jpg"
 
 # GOOD PRACTICE: KEEP YOUR COMPONENT FILE UPTO 200 LINES ONLY
+
+# onClick event handler
+     e.g:
+     <div className="filter">
+        <button
+          className="filter-btn"
+          onClick={() => {
+            listOfRestaurants = listOfRestaurants.filter(
+              (res) => res.info.avgRating > 4
+            );
+            console.log(listOfRestaurants)
+          }}
+        >
+          Top Rated Restaurants{" "}
+        </button>
+      </div>
+
+* To display the filtered data on UI:
+    => We need to use #HOOKS
+     * It is normal JS utility function with powers
+     * Two very important hooks
+       1. useState() - superpowerful state variable
+         e.g:
+           //State variable - super powerfull variable
+const [variableList, setvariableList] = useState(defaultData);
+*  Whenever a state variable updates react re-renders the component.
+       2. useEffect()
 
 

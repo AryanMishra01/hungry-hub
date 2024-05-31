@@ -43,6 +43,18 @@ flex-wrap: wrap;
     padding: 10px ;
 }
 
+.filter-btn {
+    border: 1px solid black;
+    margin: 10px;
+    cursor: pointer;
+    
+}
+
+.filter-btn:hover {
+ background-color: #04AA6D;
+  color: white;
+}
+
 .restro-logo {  
   width: 100% ;
 }
