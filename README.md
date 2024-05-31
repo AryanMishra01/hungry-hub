@@ -143,4 +143,22 @@ We can write the above code as below also:
  {restrolist.map(restaurant => (
  *        <RestroCard key={index}  resData = {restaurant}/>
         ))}
-  
+
+# Two types of import and export files:
+ * Default export:
+    e.g  export default Body;
+    import component from "path"
+ * Named import/export:
+    -> When we need to export multiple things from a single file.
+    -> export const Component
+    -> import { CDN_URL } from "../utils/contants";
+    e.g    Contants.js
+    export const CDN_URL =
+"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
+
+export const LOGO_URL = 
+"https://i.postimg.cc/VLQY49Lz/Firefly-Hungry-Hub-Food-Delivery-App-Logo-Description-Create-a-modern-and-classy-logo-for-a-food.jpg"
+
+# GOOD PRACTICE: KEEP YOUR COMPONENT FILE UPTO 200 LINES ONLY
+
+
