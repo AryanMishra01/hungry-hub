@@ -59,21 +59,22 @@
     );
 };     
          
-       const Body = () => {
+*    const Body = () => {
     return (
-       <div className="body">
+ *     <div className="body">
          <div className="search">Search</div>
          <div className="restro-container">
              <RestroCard resName="Aryan Restaurant" cuisine="Contiental, Chinese, Fast Food & more"/>
              <RestroCard resName="McDonalds" cuisine="Burger, Fries & more"/>
              
          </div>
-       </div>
+*       </div>
     )  
 }
 
 OR
 ------------
+# we can write as below:
 const RestroCard = (props) => {
 const {resName, cuisine} = props
 
@@ -138,8 +139,8 @@ We can write the above code as below also:
          This will negatively impact the performance and may cause issues with the component state.
 
 
-    e.g : 
-   *  {restrolist.map(restaurant => (
-   *          <RestroCard key={index}  resData = {restaurant}/>
-    *        ))}
+*    e.g : 
+ {restrolist.map(restaurant => (
+ *        <RestroCard key={index}  resData = {restaurant}/>
+        ))}
   
