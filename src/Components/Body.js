@@ -1,9 +1,24 @@
 import RestroCard from "./RestroCard";
-import restrolist from "../utils/mockData";
-import { useState } from "react";
+//import restrolist from "../utils/mockData";
+import { useState, useEffect } from "react";
 const Body = () => {
  //Local State variable - super powerfull variable
- const [listOfRes, setListOfRes ] = useState(restrolist);
+ const [listOfRes, setListOfRes ] = useState([]);
+
+ useEffect(()=> {
+    fetchData();
+ }, [])
+
+ const fetchData = async () =>{
+   const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8541536&lng=80.94478269999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  );
+
+  const json = await data.json();
+  // to give this data to listOfRes; we need to set it to the state.
+  //console.log(json)
+  setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+ }
+
   // normal JS variable
   // let listOfRestaurantsJS = [
   //   {
@@ -58,19 +73,18 @@ const Body = () => {
       <div className="filter">
         <button
           className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfRes.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setListOfRes(filteredList);
-          }}
+          onClick={()=>{
+            const filteredList = listOfRes.filter((res) => res.info.avgRating > 4.4  );
+            setListOfRes(filteredList)
+          }
+         }
         >
-          Top Rated Restaurants{" "}
+          Top Rated Restaurants
         </button>
       </div>
       <div className="restro-container">
-        {listOfRes.map((restaurant) => (
-          <RestroCard key={restaurant.info.id} resData={restaurant} />
+        {listOfRes.map((r) => (
+          <RestroCard key={r.info.id} resData={r} />
         ))}
       </div>
     </div>

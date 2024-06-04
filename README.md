@@ -189,4 +189,88 @@ const [variableList, setvariableList] = useState(defaultData);
 *  Whenever a state variable updates react re-renders the component.
        2. useEffect()
 
+# Reconciliation Algorithm or React Fiber (React 16):
+ * Documentation:
+   =>  https://github.com/acdlite/react-fiber-architecture
+ 
+# Microservice Architecture
+  * Structured and indepedent services.
+  * Combined together to form an APP.
+  Note: Hungry-Hub is an UI micro service written in React
+  * We can write micro services in different languages.
+   i.e. 1. Backend could be in Java
+        2. Datbase could be in Python
+        3. SMS Services could be in GoLang  etc.
+
+* These services runs on different server: 
+   * example:
+      1.  UI: http://localhost:1234
+      2.  Backend: 1000
+      3.  SMS: 3000
+* We can connect them with different url codes:
+     1. UI: /
+     2. Backend:  /api
+     3. SMS: /sms
+
+# Two approaches to fetch data from backend:
+  1. On page load: 
+      page load=> API calls => UI renders with DATA.
+    * We can only see UI once the dta is fetched and need to wait till this process is done.
+  2. After page load: (Recommended)
+       page load=> Render the UI => API CALL => re-render the UI with fetched data.
+
+# useEffect():
+   * normal function which has:
+       1. First Argument as callback function: 
+         * This will be called after your component renders.
+       2. Second Argument as dependency array.
+    example: 
+         useEffect{()=> {}, []}
+
+# .fetch
+   * this is given by js engines of browsers.
+   * when we pass api url to it, it will return promise.
+   * We can resolve promise with: 
+      # .then
+      # .catch
+      # async/await (Recommended)
+   * Then we need to convert the data in JSON format. 
+e.g:
+ * useEffect(()=> {
+    fetchData();
+ }, [])
+
+ const fetchData = async () =>{
+   const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&collection=83667"
+  );
+
+  const json = await data.json();
+  console.log(json)
+  setListOfRes(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+
+ } 
+
+# CORS
+# We cannot directly fetch data from swiggy api: due to CORS policy
+  * Our Broswers are not allowing to call Swiggy's api from local host.
+   i.e from one origin to another origin.
+  # Remedy: add CORS Extentions in browser.
+
+# To give this JSON data we need to ingest it in the state variable 
+   * Make sure to write exact api path of array
+    setListOfRes(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+   # do optional chaining (Recommended):
+      setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+       
+
+
+
+
+
+
+       
+
+
+
+
 
