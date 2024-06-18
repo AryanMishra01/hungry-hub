@@ -1,6 +1,7 @@
 import RestroCard from "./RestroCard";
 //import restrolist from "../utils/mockData";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 const Body = () => {
  //Local State variable - super powerfull variable
  const [listOfRes, setListOfRes ] = useState([]);
@@ -18,6 +19,11 @@ const Body = () => {
   //console.log(json)
   setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
  }
+
+ //Loading conditon if no data in array [SHIMMER UI]
+if(listOfRes.length === 0){
+  return <Shimmer/>
+}
 
   // normal JS variable
   // let listOfRestaurantsJS = [
