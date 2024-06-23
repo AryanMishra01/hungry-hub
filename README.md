@@ -263,6 +263,15 @@ e.g:
       setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
        
 
+# Cannot find module 'react' in reactjs.
+ * use this command : npm install --save react react-dom @types/react @types/react-dom
+
+# To enable search: bind local state to the value and enable onChange to reflect it in text:
+<!-- e.g  <input type="text" className="search-box" value={searchtext} onChange={(e) => {setSearchText(e.target.value)}}/> -->
+
+# Note: Whenever state variable update, react triggers a reconcilation cycle (re-renders the component)
+ 
+
 
 
 

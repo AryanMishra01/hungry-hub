@@ -3,27 +3,35 @@ import RestroCard from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 const Body = () => {
- //Local State variable - super powerfull variable
- const [listOfRes, setListOfRes ] = useState([]);
+  //Local State variable - super powerfull variable
+  const [listOfRes, setListOfRes] = useState([]);
+  const [filteredRes, setFilteredRes] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
- useEffect(()=> {
+  useEffect(() => {
     fetchData();
- }, [])
+  }, []);
 
- const fetchData = async () =>{
-   const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8541536&lng=80.94478269999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  );
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8541536&lng=80.94478269999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
 
-  const json = await data.json();
-  // to give this data to listOfRes; we need to set it to the state.
-  //console.log(json)
-  setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
- }
+    const json = await data.json();
+    // to give this data to listOfRes; we need to set it to the state.
+    //console.log(json)
+    setListOfRes(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRes(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
 
- //Loading conditon if no data in array [SHIMMER UI]
-if(listOfRes.length === 0){
-  return <Shimmer/>
-}
+  //Loading conditon if no data in array [SHIMMER UI]
+  // if(listOfRes.length === 0){
+  //   return <Shimmer/>
+  // }
 
   // normal JS variable
   // let listOfRestaurantsJS = [
@@ -74,22 +82,48 @@ if(listOfRes.length === 0){
   //     },
   //   },
   // ];
-  return (
+
+  // using Ternary operator below:
+  return listOfRes.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <input
+          type="text"
+          className="search-box"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            //filter the restro cards and update the UI
+            // using the text written by user
+            // includes is needed to extract text from textbox
+            const filteredRestro = listOfRes.filter((res) =>
+              res.info.name.toLowerCase().includes(searchText.toLowerCase())
+            );
+            setFilteredRes(filteredRestro);
+          }}
+        >
+          Search
+        </button>
         <button
           className="filter-btn"
-          onClick={()=>{
-            const filteredList = listOfRes.filter((res) => res.info.avgRating > 4.4  );
-            setListOfRes(filteredList)
-          }
-         }
+          onClick={() => {
+            const filteredList = listOfRes.filter(
+              (res) => res.info.avgRating > 4.4
+            );
+            setListOfRes(filteredList);
+          }}
         >
           Top Rated Restaurants
         </button>
       </div>
       <div className="restro-container">
-        {listOfRes.map((r) => (
+        {filteredRes.map((r) => (
           <RestroCard key={r.info.id} resData={r} />
         ))}
       </div>
