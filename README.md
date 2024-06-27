@@ -271,13 +271,29 @@ e.g:
 
 # Note: Whenever state variable update, react triggers a reconcilation cycle (re-renders the component)
  
+# Remove CORS error by appending https://corsproxy.io/? in front of the api call.
+
+# useEffect:  useEffect(() => {}, [])
+  * //if no dependency array ==> useEffect is called on every render
+  * //if empty dependency array = [] ==> useEffect is called on initial render (just once) 
+  * // if dependency array is [btnName] => useEffect is called everytime btnName is updated.
+
+# useState:  const [state, letState]= useState("")
+  * Never create useState outside the body.
+  * Never create useState inside loops.
+    e.g for loop/ if loop
+  * Never create useState inside a function.
+
+# Install React Router DOM: npm i react-router-dom
+
+
+# useRouteError
+  * This hook is used to give extra info about error
+  
 
 
 
 
-
-
-       
 
 
 

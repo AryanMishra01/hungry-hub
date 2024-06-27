@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 import Header from "./Components/Header"
 import Body from "./Components/Body";
-
+import About from "./Components/About";
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import Contact from "./Components/Contact";
+import Error from "./Components/Error";
 
 const AppLayout = () => {
   return (
@@ -13,6 +16,25 @@ const AppLayout = () => {
   )
   
   }
+
+  //declaring PATH AND WHICH ELEMENT TO OPEN using createBrowserRouter
+  // to handle error use: 
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <AppLayout/>,
+      errorElement: <Error/>
+    },
+    {
+      path: "/about",
+      element: <About/>
+    },
+    {
+      path: "/contact",
+      element: <Contact/>
+    },
+    
+  ])
 /**using map
   * Here we have looped over the restrolist
   * for each restaurant we're returning a JSX i.e: RestroCard with resturant data.
@@ -32,4 +54,5 @@ const AppLayout = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<AppLayout/>);
+
+root.render(<RouterProvider router={appRouter}/>);
