@@ -2,6 +2,8 @@ import RestroCard from "./RestroCard";
 //import restrolist from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+
 const Body = () => {
   //Local State variable - super powerfull variable
   const [listOfRes, setListOfRes] = useState([]);
@@ -124,7 +126,9 @@ const Body = () => {
       </div>
       <div className="restro-container">
         {filteredRes.map((r) => (
-          <RestroCard key={r.info.id} resData={r} />
+          <Link key={r.info.id} to={"/restaurants/" + r.info.id}>
+            <RestroCard resData={r} />
+          </Link>
         ))}
       </div>
     </div>
