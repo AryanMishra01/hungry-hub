@@ -74,3 +74,9 @@ flex-wrap: wrap;
     padding: 0 20px;
     cursor: pointer;
 }
+
+
+.user-card {
+    padding: 10px;
+    border: 1px solid black;
+}

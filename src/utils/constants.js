@@ -6,4 +6,7 @@ export const LOGO_URL =
 
 export const MENU_API =
 "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.8541536&lng=80.94478269999999&restaurantId="
+
+export const User_Info =
+"https://api.github.com/users/AryanMishra01"
 //above are Named export examples

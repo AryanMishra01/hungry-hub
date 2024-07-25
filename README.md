@@ -343,5 +343,51 @@ setListOfRes(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
    * It is a hook given by react router dom.
    * Used to read resID in urls
 
-   
+
+# Class Based Component.
+  * Life Cycle: Constructor -> Render ->  ComponentDidMount
+ for. eg:
+   * Parent Constructor
+   * Parent Render
+   * Child Constructor
+   * Child Render
+   * Child ComponentDidMount
+   * Parent ComponentDidMount 
+
+  * If we have lets say 2 child class component; React will reconsolidate the process and create batches of rendering and commiting phase.
+   * Parent Constructor
+   * Parent Render
+   * Child Constructor
+   * Child Render
+   * Child2 Constructor
+   * Child2 Render
+   * Child ComponentDidMount
+   * Child2 ComponentDidMount
+   * Parent ComponentDidMount 
+      
+# In class based components:
+  * We need to unmount incase we have explicitly put something in componentDidMount e.g setInterval by using:
+      componentWillUnmount
+
+# In Functional Components:
+   * if we use setInterval in useEffect(()=>{},[]); and then we switch to another componenet on the page; it will not stop the setInterval becayse we are not cleaning up
+
+
+In React: it wants to render it's component as qucikly as possibile and then makes the Api's call using below methods.
+
+For ClassBasedComponent-->>>>>
+# ComponentDidMount:
+   * We make API calls inside it.
+For Functional Component-->>>>
+# useEffect:
+    * We make API calls inside it.
+
+# LifeCycleMethod in React: 
+   * It has two phases: 
+        1. Rendering phase
+        2. Commit phase
+
+  Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+
    
