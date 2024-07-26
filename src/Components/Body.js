@@ -3,6 +3,7 @@ import RestroCard from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   //Local State variable - super powerfull variable
@@ -22,12 +23,9 @@ const Body = () => {
     const json = await data.json();
     // to give this data to listOfRes; we need to set it to the state.
     //console.log(json)
-    setListOfRes(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRes(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    // Optional Chaining
+    setListOfRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants );
+    setFilteredRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
   //Loading conditon if no data in array [SHIMMER UI]
@@ -84,6 +82,9 @@ const Body = () => {
   //     },
   //   },
   // ];
+const onlineStatus = useOnlineStatus();
+if(onlineStatus === false) return <h1>Looks like you're offline ! Please check your internet connection.</h1>
+
 
   // using Ternary operator below:
   return listOfRes.length === 0 ? (

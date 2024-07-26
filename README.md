@@ -47,8 +47,8 @@ CSS:
   - used to pass properties to the component
   - these are just like passing normal arguments to a function.
   - when you have to dynamic pass data to a component we pass it as a prop
-         e.g:
-         const RestroCard = (props) => {
+    e.g:
+    const RestroCard = (props) => {
     return (
 
 *       <div className="restro-card" style={styleCard}>
@@ -59,7 +59,8 @@ CSS:
               <h4>30 minutes</h4>
           </div>
       );
-  };  
+
+  };
 
 * const Body = () => {
   return (
@@ -70,6 +71,7 @@ CSS:
             <RestroCard resName="McDonalds" cuisine="Burger, Fries & more"/>
 
         </div>
+
 *       </div>
       )
   }
@@ -105,8 +107,7 @@ We can write the above code as below also:
               <h4>30 minutes</h4>
           </div>
       );
-  };  
-
+  };
 
 ---
 
@@ -230,8 +231,7 @@ export const LOGO_URL =
 1. On page load:
    page load=> API calls => UI renders with DATA.
 
-
-    * We can only see UI once the dta is fetched and need to wait till this process is done.
+   - We can only see UI once the dta is fetched and need to wait till this process is done.
 
 2. After page load: (Recommended)
    page load=> Render the UI => API CALL => re-render the UI with fetched data.
@@ -239,10 +239,11 @@ export const LOGO_URL =
 # useEffect():
 
 - normal function which has:
+
   1.  First Argument as callback function:
 
+      - This will be called after your component renders.
 
-       * This will be called after your component renders.
   2.  Second Argument as dependency array.
       example:
       useEffect{()=> {}, []}
@@ -289,7 +290,6 @@ setListOfRes(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
 
       setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
 
-
 # Cannot find module 'react' in reactjs.
 
 - use this command : npm install --save react react-dom @types/react @types/react-dom
@@ -322,72 +322,111 @@ setListOfRes(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
 - This hook is used to give extra info about error
 
 # children route for pages using
-   * Outlet
 
-# Never use anchor tag with href 
-  * Because the whole page refreshes.
-# We can route without reloading the page: 
-  # Link component:
-   * Behind the scenes it is using anchor tag and href.
-   * Link is a wrapper over anchor tag
-   <!-- e.g: <li><Link to="/contact">Contact Us</Link></li>  -->
+- Outlet
+
+# Never use anchor tag with href
+
+- Because the whole page refreshes.
+
+# We can route without reloading the page:
+
+# Link component:
+
+- Behind the scenes it is using anchor tag and href.
+- Link is a wrapper over anchor tag
+<!-- e.g: <li><Link to="/contact">Contact Us</Link></li>  -->
 
 # Two types of routing in web apps
-   * Client Side Routing: 
-      1. All the routing of pages comes under it using react router dom. 
-      2. It dosn't make any network calls.
-   * Server Side Routing: When we use anchor tag with href it makes call to about.html page and fetchs it then renders on the page while refreshing the whole page.
 
+- Client Side Routing:
+  1. All the routing of pages comes under it using react router dom.
+  2. It dosn't make any network calls.
+- Server Side Routing: When we use anchor tag with href it makes call to about.html page and fetchs it then renders on the page while refreshing the whole page.
 
 # useParams
-   * It is a hook given by react router dom.
-   * Used to read resID in urls
 
+- It is a hook given by react router dom.
+- Used to read resID in urls
 
 # Class Based Component.
-  * Life Cycle: Constructor -> Render ->  ComponentDidMount
- for. eg:
-   * Parent Constructor
-   * Parent Render
-   * Child Constructor
-   * Child Render
-   * Child ComponentDidMount
-   * Parent ComponentDidMount 
 
-  * If we have lets say 2 child class component; React will reconsolidate the process and create batches of rendering and commiting phase.
-   * Parent Constructor
-   * Parent Render
-   * Child Constructor
-   * Child Render
-   * Child2 Constructor
-   * Child2 Render
-   * Child ComponentDidMount
-   * Child2 ComponentDidMount
-   * Parent ComponentDidMount 
-      
+- Life Cycle: Constructor -> Render -> ComponentDidMount
+  for. eg:
+- Parent Constructor
+- Parent Render
+- Child Constructor
+- Child Render
+- Child ComponentDidMount
+- Parent ComponentDidMount
+
+- If we have lets say 2 child class component; React will reconsolidate the process and create batches of rendering and commiting phase.
+- Parent Constructor
+- Parent Render
+- Child Constructor
+- Child Render
+- Child2 Constructor
+- Child2 Render
+- Child ComponentDidMount
+- Child2 ComponentDidMount
+- Parent ComponentDidMount
+
 # In class based components:
-  * We need to unmount incase we have explicitly put something in componentDidMount e.g setInterval by using:
-      componentWillUnmount
+
+- We need to unmount incase we have explicitly put something in componentDidMount e.g setInterval by using:
+  componentWillUnmount
 
 # In Functional Components:
-   * if we use setInterval in useEffect(()=>{},[]); and then we switch to another componenet on the page; it will not stop the setInterval becayse we are not cleaning up
 
+- if we use setInterval in useEffect(()=>{},[]); and then we switch to another componenet on the page; it will not stop the setInterval because we are not cleaning up:
+- To clean it:
+  useEffect(()=> {
+  const timer = setInterval(() => {
+  console.log("setInterval");
+  }, 1000);
+  return () => {
+  //Unmounting
+  clearInterval(timer);
+  }
+  },[])
 
 In React: it wants to render it's component as qucikly as possibile and then makes the Api's call using below methods.
 
 For ClassBasedComponent-->>>>>
+
 # ComponentDidMount:
-   * We make API calls inside it.
-For Functional Component-->>>>
+
+- We make API calls inside it.
+  For Functional Component-->>>>
+
 # useEffect:
+
     * We make API calls inside it.
 
-# LifeCycleMethod in React: 
-   * It has two phases: 
-        1. Rendering phase
-        2. Commit phase
+# LifeCycleMethod in React:
 
-  Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+- It has two phases:
+  1. Rendering phase
+  2. Commit phase
 
+Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
-   
+# Single responsibility principle
+   * Any component created should only perform the tasks for its work.
+   * Keeping the modules smaller and task specific leads to easier  
+   1. Testing  
+   2. Maintainability
+   3. Reusability 
+
+# CUSTOM HOOKS
+   * All hooks are utility functions.
+   * It's not mandatory to create custom hooks.
+
+# Online event listner
+   *  window.addEventListener("offline", () => {
+                setOnlineStatus(false);
+         })
+
+# Windows Key + . 
+  * opens EMOJI panel
+

@@ -7,6 +7,7 @@ import React from "react";
 class UserClass extends React.Component {
 constructor(props) {
     super(props);
+   console.log("Class-Constructor")
     this.state = {
         count: 0,
         userInfo: {
@@ -18,9 +19,10 @@ constructor(props) {
 }
 
 async componentDidMount() {
+  console.log("Class-componentDidMount")
   const data = await fetch("https://api.github.com/users/AryanMishra01")
   const json = await data.json()
-  console.log("Class",json)
+ // console.log("Class",json)
 
   this.setState({
     userInfo: json
@@ -28,6 +30,7 @@ async componentDidMount() {
 }
 
   render() { 
+    console.log("Class-render")
     const {count} = this.state
     const {name, location, avatar_url} = this.state.userInfo
     return (
