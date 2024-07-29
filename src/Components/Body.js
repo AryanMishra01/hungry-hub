@@ -1,4 +1,4 @@
-import RestroCard from "./RestroCard";
+import RestroCard, { withPromotedLabel } from "./RestroCard";
 //import restrolist from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -8,29 +8,36 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   //Local State variable - super powerfull variable
- const [listOfRes,setListOfRes] = useState([]);
-const [filteredRes,setFilteredRes] = useState([]);
+  const [listOfRes, setListOfRes] = useState([]);
+  const [filteredRes, setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const RestaurantCardPromoted = withPromotedLabel(RestroCard);
   //const listOfRes = useRestroList()
   //const filteredRes = useRestroList()
 
-   useEffect(() => {
-    fetchData();
-   }, []);
+  //console.log("Body rendered", listOfRes)
 
-   const fetchData = async () => {
- const data = await fetch(
-     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8541536&lng=80.94478269999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-     );
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8541536&lng=80.94478269999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
 
     const json = await data.json();
     // to give this data to listOfRes; we need to set it to the state.
-    //console.log(json)
+    console.log(json);
     // Optional Chaining
-   setListOfRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants );
-     setFilteredRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-   };
+    setListOfRes(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRes(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
 
   //Loading conditon if no data in array [SHIMMER UI]
   // if(listOfRes.length === 0){
@@ -86,53 +93,69 @@ const [filteredRes,setFilteredRes] = useState([]);
   //     },
   //   },
   // ];
-const onlineStatus = useOnlineStatus();
-if(onlineStatus === false) return <h1>Looks like you're offline ! Please check your internet connection.</h1>
-
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you're offline ! Please check your internet connection.
+      </h1>
+    );
 
   // using Ternary operator below:
   return listOfRes.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <input
-          type="text"
-          className="search-box"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            //filter the restro cards and update the UI
-            // using the text written by user
-            // includes is needed to extract text from textbox
-            const filteredRestro = listOfRes.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
-            );
-            setFilteredRes(filteredRestro);
-          }}
-        >
-          Search
-        </button>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfRes.filter(
-              (res) => res.info.avgRating > 4.4
-            );
-            setListOfRes(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+      <div className="filter flex shadow-sm">
+        <div className="search m-2 p-2">
+          <input
+            type="text"
+            className="border border-solid: border-black shadow-md"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+
+          <button
+            className="px-3 py-1 bg-green-200 hover:bg-green-400 m-4 rounded-lg shadow-md"
+            onClick={() => {
+              //filter the restro cards and update the UI
+              // using the text written by user
+              // includes is needed to extract text from textbox
+              const filteredRestro = listOfRes.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRes(filteredRestro);
+              // console.log(filteredRestro)
+            }}
+          >
+            Search
+          </button>
+        </div>
+        <div className="search m-1 p-1 flex items-center">
+          <button
+            className="px-3 py-1 bg-sky-200 hover:bg-sky-700 rounded-lg shadow-md"
+            onClick={() => {
+              const filteredList = listOfRes.filter(
+                (res) => res.info.avgRating > 4.4
+              );
+              setFilteredRes(filteredList);
+              // console.log("Top filtered", filteredList);
+            }}
+          >
+            Top Rated Restaurants 🔝
+          </button>
+        </div>
       </div>
-      <div className="restro-container">
+      <div className="flex flex-wrap">
         {filteredRes.map((r) => (
           <Link key={r.info.id} to={"/restaurants/" + r.info.id}>
-            <RestroCard resData={r} />
+            {r.info.veg ? (
+              <RestaurantCardPromoted resData={r} />
+            ) : (
+              <RestroCard resData={r} />
+            )}
           </Link>
         ))}
       </div>

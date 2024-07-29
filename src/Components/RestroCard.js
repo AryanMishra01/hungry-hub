@@ -4,12 +4,13 @@ const RestroCard = (props) => {
     //destructing 
   const {resData} = props;
   // conditional rendering ?.
-  const {cloudinaryImageId, name, avgRating, cuisines,costForTwo,sla } = resData?.info;
-  const {deliveryTime} = resData?.info.sla
+  const {cloudinaryImageId, name, avgRating, cuisines,costForTwo, sla } = resData?.info;
+  //const {deliveryTime} = resData?.info.sla
       return (
-          <div className="restro-card" style={styleCard}>
-              <img className="restro-logo" alt="restro-logo" src= {CDN_URL + cloudinaryImageId} />
-              <h3>{name}</h3>
+       //  <div style={styleCard} >
+          <div className="m-4 p-4 w-[250px] rounded-lg shadow-lg bg-gray-100 hover:bg-gray-200">
+              <img className="rounded-lg" alt="restro-logo" src= {CDN_URL + cloudinaryImageId} />
+              <h3 className="font-bold py-4 text-lg">{name}</h3>
               <h4>{cuisines.join(", ")}</h4>
               <h4>{avgRating} stars</h4>
               <h4>{costForTwo}</h4>
@@ -18,9 +19,22 @@ const RestroCard = (props) => {
       );
   };
 
-  const styleCard = {
-    backgroundColor: "#f0f0f0"
- 
+ // const styleCard = {
+   // backgroundColor: "#f0f0f0" 
+ //}
+
+ //HOC: HIGHER ORDER FUNCTION
+ // INPUT: RestaurantCard =>  RestaurantCardPromoted
+export const withPromotedLabel = (RestroCard) => {
+
+  return (props) => {
+    return (
+      <div>
+        <label className="flex flex-auto absolute bg-green-800 text-white m-2 p-2 rounded-lg opacity-80">Veg</label>
+        <RestroCard {...props}/>
+      </div>
+    )
+  }
  }
 
   export default RestroCard;

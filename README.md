@@ -453,3 +453,59 @@ Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
          element: <Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>,
       }, -->
 
+# Recommended ways to ad CSS in project.
+    * SCSS or SASS
+    * Styled components.
+    * Material UI
+    * Bootstrap
+    * Chakra UI
+    * Ant Design
+    * Tailwind CSS
+
+# Tailwind CSS: 
+   * Install:
+      <!-- npm install -D tailwindcss postcss
+      npx tailwindcss init -->
+    * postcss: 
+        * Tool to transform CSS with JS.
+        * Tailwind uses postcss behind the scene.
+
+    *   npx tailwindcss init: 
+        * We're intiallizing tailwindcss in our repository.
+        * It creates "tailwind.config.js"
+    * Create a .postcssrc file in root.
+       * This helps parcel bundler to understand what is written in tailwind. 
+
+# Tailwind use:
+   * flex - sets the ui as per page
+   * w-56 -  set the width
+   * justify-between -  equal sapce between texts.
+   * p-5  - padding
+   * m-5  - margin
+   * mb-2  - margin bottom
+   * items-center   - aligns items to center
+   * px-4 -  padding on X-axis
+   * py-4 - padding on Y-axis
+   * w-[200px] - making own width size
+   * flex-wrap - To wrap cards 
+   * text-lg - text large
+   * font-bold - BOLD font
+
+# Install Tailwind CSS IntelliSense:
+   * for easier use.
+   * Incase it doesn't give sugesstion use:
+     * CTRL + SPACEBAR
+
+# Higher ORDER Function (HOC)
+  * HOC is a function that take a component and returns a component.
+  * It enahces an existing component and returns it back.
+  
+
+
+  
+
+
+    
+
+
+
