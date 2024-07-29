@@ -4,29 +4,33 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+//import useRestroList from "../utils/useRestroList";
 
 const Body = () => {
   //Local State variable - super powerfull variable
-  const [listOfRes, setListOfRes] = useState([]);
-  const [filteredRes, setFilteredRes] = useState([]);
+ const [listOfRes,setListOfRes] = useState([]);
+const [filteredRes,setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  //const listOfRes = useRestroList()
+  //const filteredRes = useRestroList()
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8541536&lng=80.94478269999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+   useEffect(() => {
+    fetchData();
+   }, []);
+
+   const fetchData = async () => {
+ const data = await fetch(
+     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8541536&lng=80.94478269999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+     );
 
     const json = await data.json();
     // to give this data to listOfRes; we need to set it to the state.
     //console.log(json)
     // Optional Chaining
-    setListOfRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants );
-    setFilteredRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  };
+   setListOfRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants );
+     setFilteredRes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+   };
 
   //Loading conditon if no data in array [SHIMMER UI]
   // if(listOfRes.length === 0){

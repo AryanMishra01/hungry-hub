@@ -430,3 +430,26 @@ Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 # Windows Key + . 
   * opens EMOJI panel
 
+
+# Chunking/ Code Splitting/ Dynamic Bundling / Lazy Loading/ On Demand Loading/ Dynamic Import
+  * Bundling application fucntionality individually.
+  * Decreasing the size of JS file will increase the performance of the app.
+  * Splitting JS file into smaller JS file bundles using lazy function.
+  * Only load the code/page when the tab is clicked (lazy laoding) 
+   for eg:  using function lazy().
+     * import React , {lazy} from "react";
+     * const Grocery = lazy(()=> import("./Components/Grocery"))
+                                    <!--callback-->
+      <!-- const Grocery = lazy(()=> import("path")) -->
+  * Since it takes time to load the lazy loaded page; React will throw error.
+  * To resolve this issue:
+      * Suspense is used.
+      * Import it and then WRAP the component with Suspense.
+      * Give a "fallback" (similar to shimmer UI,  we can pass Shimmer UI component as well)when the code loads on the screen; since it takes time to load code using lazy loading.
+      * In fallback we can pass JSX
+     <!-- import React , {lazy, Suspense} from "react";
+       {
+        path: "/grocery",
+         element: <Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>,
+      }, -->
+
