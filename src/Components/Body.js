@@ -29,7 +29,7 @@ const Body = () => {
 
     const json = await data.json();
     // to give this data to listOfRes; we need to set it to the state.
-    console.log(json);
+    console.log("data",json);
     // Optional Chaining
     setListOfRes(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
