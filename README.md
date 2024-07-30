@@ -499,7 +499,42 @@ Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 # Higher ORDER Function (HOC)
   * HOC is a function that take a component and returns a component.
   * It enahces an existing component and returns it back.
-  
+
+
+# Lifting state up
+# Props Drilling: 
+   * If we want to pass data(props) from parent to a specific child we cannot do it until we pass the data (props) through the child trees below it.
+   * To solve this issue we use:  "useContext"
+
+# React Context: we can create multiple context
+  * createContext: to create a context
+  import { createContext } from "react";
+   const UserContext = createContext({
+    loggedInUser: "Default User"
+});
+export default UserContext;
+
+  * useContext: to use the context created
+    import { useState, useContext} from "react";
+    const {loggedInUser} = useContext(UserContext)
+
+  * Provider
+  <!-- * <UserContext.Provider  value={{loggedInUser: userName}>
+     
+    1. We can wraps the whole App.js.
+    
+    2. We can wrap particular component with it with different value
+
+    3. This will give you the value passed as props, not the value mentioned in UserContext.
+
+  </UserContext.Provider> -->
+
+
+  # usecontext in Class based:
+    <!-- * <UserContext.Consumer>
+     {({loggedInUser}) => (<h1>{loggedInUser}</h1>)}
+    </UserContext.Consumer>
+   -->
 
 
   

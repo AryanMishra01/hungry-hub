@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 //import { MENU_API } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestroCategory from "./RestroCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   //const [resInfo, setresInfo] = useState(null);
@@ -12,6 +13,7 @@ const RestaurantMenu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
+  const [showIndex,setShowIndex] = useState(null)
   // useEffect(() => {
   //   fetchMenu();
   // }, []);
@@ -54,8 +56,14 @@ const RestaurantMenu = () => {
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
       {/* Categories Accordions */}
-      {categories.map((category) => (
-        <RestroCategory key={category?.card?.card.title} data={category?.card?.card} />
+      {categories.map((category, index) => (
+        //controlled component
+        <RestroCategory
+          key={category?.card?.card.title}
+          data={category?.card?.card}
+          showItems={index == showIndex ? true : false}
+          setShowIndex={()=> setShowIndex(index)}
+        />
       ))}
       {/* <h3>Menu</h3>
       <ul>

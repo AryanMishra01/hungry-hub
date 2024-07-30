@@ -1,14 +1,19 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestroCategory = ({data}) => {
+const RestroCategory = ({data, showItems, setShowIndex}) => {
 console.log("RestroCategory",data)
 
-const [showItems, setShowItems] = useState(false)
+// const [showItems, setShowItems] = useState(false)
 //Toggle Accordion 
-const handleClick = () => {
-    setShowItems(!showItems)
+// const handleClick = () => {
+//     setShowItems(!showItems)
+// }
+
+const handleClick = () => { 
+  setShowIndex();
 }
+
     return (
         <div>
             {/*HEADER */}

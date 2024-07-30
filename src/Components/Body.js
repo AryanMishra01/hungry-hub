@@ -1,10 +1,11 @@
 import RestroCard, { withPromotedLabel } from "./RestroCard";
 //import restrolist from "../utils/mockData";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 //import useRestroList from "../utils/useRestroList";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //Local State variable - super powerfull variable
@@ -29,7 +30,7 @@ const Body = () => {
 
     const json = await data.json();
     // to give this data to listOfRes; we need to set it to the state.
-    console.log("data",json);
+    console.log("data", json);
     // Optional Chaining
     setListOfRes(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -101,6 +102,8 @@ const Body = () => {
       </h1>
     );
 
+  const { setUserName, loggedInUser } = useContext(UserContext);
+
   // using Ternary operator below:
   return listOfRes.length === 0 ? (
     <Shimmer />
@@ -110,7 +113,7 @@ const Body = () => {
         <div className="search m-2 p-2">
           <input
             type="text"
-            className="border border-solid: border-black shadow-md"
+            className="border border-solid: border-black shadow-md p-1"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -118,7 +121,7 @@ const Body = () => {
           />
 
           <button
-            className="px-3 py-1 bg-green-200 hover:bg-green-400 m-4 rounded-lg shadow-md"
+            className="px-5 py-2 font-medium bg-green-200 hover:bg-green-400 m-2 rounded-lg shadow-md"
             onClick={() => {
               //filter the restro cards and update the UI
               // using the text written by user
@@ -135,7 +138,7 @@ const Body = () => {
         </div>
         <div className="search m-1 p-1 flex items-center">
           <button
-            className="px-3 py-1 bg-sky-200 hover:bg-sky-700 rounded-lg shadow-md"
+            className="px-3 py-2 font-medium bg-sky-200 hover:bg-sky-700 rounded-lg shadow-md"
             onClick={() => {
               const filteredList = listOfRes.filter(
                 (res) => res.info.avgRating > 4.4
@@ -146,6 +149,16 @@ const Body = () => {
           >
             Top Rated Restaurants 🔝
           </button>
+        </div>
+        <div className="search m-1 p-1 flex items-center">
+          <lable>UserName: </lable>
+          <input
+            className="border border-black shadow-md p-2"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">

@@ -6,19 +6,33 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import RestaurantMenu from "./Components/RestaurantMenu";
-
+import UserContext from "./utils/UserContext";
+import { useState, useEffect } from "react";
 
 //lazy loading
 const Grocery = lazy(()=> import("./Components/Grocery"))
 const About = lazy(()=> import("./Components/About"))
 
 const AppLayout = () => {
+
+  const [userName, setUserName] = useState();
+
+   //authentication
+   useEffect(()=> {
+    const data = {
+      name: "Aryan Mishra"
+    }
+    setUserName(data.name)
+   }, [])
+
   return (
+    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
     <div className="app">
       <Header />
       {/** Outlet will populate the children from appRoute*/}
       <Outlet/>
     </div>
+    </UserContext.Provider>
   );
 };
 
