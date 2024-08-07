@@ -536,6 +536,128 @@ export default UserContext;
     </UserContext.Consumer>
    -->
 
+# REDUX:
+ * It's not mandatory to use it.
+ * Alterante to it is "zustand"
+ * Advantages:
+      * Used for handling state of our application.
+      * It is easier to debug.
+ * Extention: 
+      * Redux dev tools
+ * Two libraries offered by REDUX
+       * React-Redux (learning curve was very high)
+       * Redux Toolkit [RTK](standard way to write)
+ * Advantages of REDUX TOOLKIT  [RTK]:
+       * It doesn't have to add a lot of packages to get Redux to do anything useful.
+       * Shorter Code.
+
+* Architecture of Redux:
+     <!-- * We will store cart's information in our REDUX STORE. -->
+ # TO WRITE DATA:
+     * REDUX STORE:
+         * JS object with lots of data inside it.
+         * It is kept in a global central place.
+         * Any component can read/write or edit data from it.
+
+     * SLICES:
+          * We make logical partitions
+          * These logical partitions are SLICES.
+     * We cannot directly modify Cart in redux: 
+          * To do that we need: DISPATCH an ACTION.
+          * ACTION will calls a FUNCTION(REDUCER) which motifies the CART.
+          * This REDUCER updates the slice of our REDUX STORE.
+
+  
+  # TO READ DATA:
+     * SELECTOR will read the data and modifiy our react component.
+     * The above phenomenon is known as Subscribing to the store.
+  
+  
+  # REDUX Flow:
+      Click[Add]-->Dispatches [Action] --> Reducer[Function] -->Store[Slice] -->Subscribes [Selector] --> Updated
+
+# REDUX TOOLKIT:
+   * Install @reduxjs/toolkit and react-redux
+   * Build our own store:
+       import { configureStore } from "@reduxjs/toolkit"
+       appStore.js
+   * Connect our store to our app:
+       import { Provider } from "react-redux";
+    <!-- <Provider store={appStore}>
+    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+    <div className="app">
+      <Header />
+      {/** Outlet will populate the children from appRoute*/}
+      <Outlet/>
+    </div>
+    </UserContext.Provider>
+    </Provider> -->
+   * Slice (cartSlice)
+      import { createSlice } from "@reduxjs/toolkit"
+        cardSlice.js
+   * dispatch(action)
+   * Selector
+      import { useSelector } from "react-redux";
+       Header.js
+
+# Things to remember in REDUX SUBSCRIBE:
+   * Make sure to subscribe to the right portion of the STORE.
+   * Because this could cause performance loss.
+
+# Things to remember in REDUX REDUCER/REDUCERS:
+   * We only use reducer in appStore.
+   * "reducers" are only used when create slice; But it is exported as reducer.  ; cardSlice.js. 
+
+# RTK QUERY: READ https://redux-toolkit.js.org/tutorials/rtk-query
+         
+# TESTING (DEV Point of View)
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
 
   
 

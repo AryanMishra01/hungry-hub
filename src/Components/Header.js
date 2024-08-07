@@ -1,34 +1,50 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState, useContext} from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-const [btnName, setBtnName] = useState("Login");
-const onlineStatus = useOnlineStatus();
+  const [btnName, setBtnName] = useState("Login");
+  const onlineStatus = useOnlineStatus();
 
-const {loggedInUser} = useContext(UserContext)
+  const { loggedInUser } = useContext(UserContext);
 
   //if no dependency array ==> useEffect is called on every render
-  //if empty dependency array = [] ==> useEffect is called on initial render (just once) 
+  //if empty dependency array = [] ==> useEffect is called on initial render (just once)
   // if dependency array is [btnName] => useEffect is called everytime btnName is updated.
-//useEffect(() => {}, [])
+  //useEffect(() => {}, [])
 
+  //Selector: it's a hook inside react app
+  // Subscribing to the store using a Selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between shadow-md mb-2 bg-yellow-50">
       <div className="logo-container">
-      <img className="w-56" src={LOGO_URL} />
+        <img className="w-56" src={LOGO_URL} />
       </div>
       <div className="flex items-center">
         <ul className="flex p-5 m-5 font-bold">
-          <li className="px-4 text-slate-500">Online Status: {onlineStatus ? "✅" : "🔴" } </li>
-          <li className="px-4  text-slate-950 hover:text-blue-600"><Link to="/">Home</Link></li>
-          <li className="px-4  text-slate-950 hover:text-blue-600"><Link to="/about">About Us</Link></li>
-          <li className="px-4  text-slate-950 hover:text-blue-600"><Link to="/contact">Contact Us</Link></li>
-          <li className="px-4  text-slate-950 hover:text-blue-600"><Link to="/grocery">Grocery</Link></li>
-          <li className="px-4  text-slate-950 hover:text-blue-600"><Link to="/cart">Cart</Link></li>
+          <li className="px-4 text-slate-500">
+            Online Status: {onlineStatus ? "✅" : "🔴"}{" "}
+          </li>
+          <li className="px-4  text-slate-950 hover:text-blue-600">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="px-4  text-slate-950 hover:text-blue-600">
+            <Link to="/about">About Us</Link>
+          </li>
+          <li className="px-4  text-slate-950 hover:text-blue-600">
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li className="px-4  text-slate-950 hover:text-blue-600">
+            <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="px-4 font-bold text-slate-950 hover:text-blue-600">
+            <Link to="/cart">Cart: ({cartItems.length} items)</Link>
+          </li>
           <button
             className="px-4  text-slate-950 hover:text-blue-600"
             onClick={() => {
