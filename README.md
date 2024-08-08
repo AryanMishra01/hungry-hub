@@ -412,48 +412,54 @@ For ClassBasedComponent-->>>>>
 Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 # Single responsibility principle
-   * Any component created should only perform the tasks for its work.
-   * Keeping the modules smaller and task specific leads to easier  
-   1. Testing  
-   2. Maintainability
-   3. Reusability 
+
+- Any component created should only perform the tasks for its work.
+- Keeping the modules smaller and task specific leads to easier
+
+1.  Testing
+2.  Maintainability
+3.  Reusability
 
 # CUSTOM HOOKS
-   * All hooks are utility functions.
-   * It's not mandatory to create custom hooks.
+
+- All hooks are utility functions.
+- It's not mandatory to create custom hooks.
 
 # Online event listner
-   *  window.addEventListener("offline", () => {
-                setOnlineStatus(false);
-         })
 
-# Windows Key + . 
-  * opens EMOJI panel
+- window.addEventListener("offline", () => {
+  setOnlineStatus(false);
+  })
 
+# Windows Key + .
+
+- opens EMOJI panel
 
 # Chunking/ Code Splitting/ Dynamic Bundling / Lazy Loading/ On Demand Loading/ Dynamic Import
-  * Bundling application fucntionality individually.
-  * Decreasing the size of JS file will increase the performance of the app.
-  * Splitting JS file into smaller JS file bundles using lazy function.
-  * Only load the code/page when the tab is clicked (lazy laoding) 
-   for eg:  using function lazy().
-     * import React , {lazy} from "react";
-     * const Grocery = lazy(()=> import("./Components/Grocery"))
-                                    <!--callback-->
-      <!-- const Grocery = lazy(()=> import("path")) -->
-  * Since it takes time to load the lazy loaded page; React will throw error.
-  * To resolve this issue:
-      * Suspense is used.
-      * Import it and then WRAP the component with Suspense.
-      * Give a "fallback" (similar to shimmer UI,  we can pass Shimmer UI component as well)when the code loads on the screen; since it takes time to load code using lazy loading.
-      * In fallback we can pass JSX
-     <!-- import React , {lazy, Suspense} from "react";
-       {
-        path: "/grocery",
-         element: <Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>,
-      }, -->
+
+- Bundling application fucntionality individually.
+- Decreasing the size of JS file will increase the performance of the app.
+- Splitting JS file into smaller JS file bundles using lazy function.
+- Only load the code/page when the tab is clicked (lazy laoding)
+  for eg: using function lazy().
+  - import React , {lazy} from "react";
+  - const Grocery = lazy(()=> import("./Components/Grocery"))
+  <!--callback-->
+  <!-- const Grocery = lazy(()=> import("path")) -->
+- Since it takes time to load the lazy loaded page; React will throw error.
+- To resolve this issue:
+  - Suspense is used.
+  - Import it and then WRAP the component with Suspense.
+  - Give a "fallback" (similar to shimmer UI, we can pass Shimmer UI component as well)when the code loads on the screen; since it takes time to load code using lazy loading.
+  - In fallback we can pass JSX
+  <!-- import React , {lazy, Suspense} from "react";
+    {
+     path: "/grocery",
+      element: <Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>,
+   }, -->
 
 # Recommended ways to ad CSS in project.
+
     * SCSS or SASS
     * Styled components.
     * Material UI
@@ -462,98 +468,109 @@ Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
     * Ant Design
     * Tailwind CSS
 
-# Tailwind CSS: 
-   * Install:
-      <!-- npm install -D tailwindcss postcss
-      npx tailwindcss init -->
-    * postcss: 
-        * Tool to transform CSS with JS.
-        * Tailwind uses postcss behind the scene.
+# Tailwind CSS:
 
-    *   npx tailwindcss init: 
-        * We're intiallizing tailwindcss in our repository.
-        * It creates "tailwind.config.js"
-    * Create a .postcssrc file in root.
-       * This helps parcel bundler to understand what is written in tailwind. 
+- Install:
+   <!-- npm install -D tailwindcss postcss
+   npx tailwindcss init -->
+- postcss:
+
+  - Tool to transform CSS with JS.
+  - Tailwind uses postcss behind the scene.
+
+- npx tailwindcss init:
+  - We're intiallizing tailwindcss in our repository.
+  - It creates "tailwind.config.js"
+- Create a .postcssrc file in root.
+  - This helps parcel bundler to understand what is written in tailwind.
 
 # Tailwind use:
-   * flex - sets the ui as per page
-   * w-56 -  set the width
-   * justify-between -  equal sapce between texts.
-   * p-5  - padding
-   * m-5  - margin
-   * mb-2  - margin bottom
-   * items-center   - aligns items to center
-   * px-4 -  padding on X-axis
-   * py-4 - padding on Y-axis
-   * w-[200px] - making own width size
-   * flex-wrap - To wrap cards 
-   * text-lg - text large
-   * font-bold - BOLD font
+
+- flex - sets the ui as per page
+- w-56 - set the width
+- justify-between - equal sapce between texts.
+- p-5 - padding
+- m-5 - margin
+- mb-2 - margin bottom
+- items-center - aligns items to center
+- px-4 - padding on X-axis
+- py-4 - padding on Y-axis
+- w-[200px] - making own width size
+- flex-wrap - To wrap cards
+- text-lg - text large
+- font-bold - BOLD font
 
 # Install Tailwind CSS IntelliSense:
-   * for easier use.
-   * Incase it doesn't give sugesstion use:
-     * CTRL + SPACEBAR
+
+- for easier use.
+- Incase it doesn't give sugesstion use:
+  - CTRL + SPACEBAR
 
 # Higher ORDER Function (HOC)
-  * HOC is a function that take a component and returns a component.
-  * It enahces an existing component and returns it back.
 
+- HOC is a function that take a component and returns a component.
+- It enahces an existing component and returns it back.
 
 # Lifting state up
-# Props Drilling: 
-   * If we want to pass data(props) from parent to a specific child we cannot do it until we pass the data (props) through the child trees below it.
-   * To solve this issue we use:  "useContext"
+
+# Props Drilling:
+
+- If we want to pass data(props) from parent to a specific child we cannot do it until we pass the data (props) through the child trees below it.
+- To solve this issue we use: "useContext"
 
 # React Context: we can create multiple context
-  * createContext: to create a context
+
+- createContext: to create a context
   import { createContext } from "react";
-   const UserContext = createContext({
-    loggedInUser: "Default User"
-});
-export default UserContext;
+  const UserContext = createContext({
+  loggedInUser: "Default User"
+  });
+  export default UserContext;
 
-  * useContext: to use the context created
-    import { useState, useContext} from "react";
-    const {loggedInUser} = useContext(UserContext)
+- useContext: to use the context created
+  import { useState, useContext} from "react";
+  const {loggedInUser} = useContext(UserContext)
 
-  * Provider
-  <!-- * <UserContext.Provider  value={{loggedInUser: userName}>
-     
-    1. We can wraps the whole App.js.
-    
-    2. We can wrap particular component with it with different value
+- Provider
+<!-- * <UserContext.Provider  value={{loggedInUser: userName}>
+   
+  1. We can wraps the whole App.js.
+  
+  2. We can wrap particular component with it with different value
 
-    3. This will give you the value passed as props, not the value mentioned in UserContext.
+  3. This will give you the value passed as props, not the value mentioned in UserContext.
 
-  </UserContext.Provider> -->
+</UserContext.Provider> -->
 
+# usecontext in Class based:
 
-  # usecontext in Class based:
     <!-- * <UserContext.Consumer>
      {({loggedInUser}) => (<h1>{loggedInUser}</h1>)}
     </UserContext.Consumer>
-   -->
+
+-->
 
 # REDUX:
- * It's not mandatory to use it.
- * Alterante to it is "zustand"
- * Advantages:
-      * Used for handling state of our application.
-      * It is easier to debug.
- * Extention: 
-      * Redux dev tools
- * Two libraries offered by REDUX
-       * React-Redux (learning curve was very high)
-       * Redux Toolkit [RTK](standard way to write)
- * Advantages of REDUX TOOLKIT  [RTK]:
-       * It doesn't have to add a lot of packages to get Redux to do anything useful.
-       * Shorter Code.
 
-* Architecture of Redux:
+- It's not mandatory to use it.
+- Alterante to it is "zustand"
+- Advantages:
+  - Used for handling state of our application.
+  - It is easier to debug.
+- Extention:
+  - Redux dev tools
+- Two libraries offered by REDUX
+  _ React-Redux (learning curve was very high)
+  _ Redux Toolkit [RTK](standard way to write)
+- Advantages of REDUX TOOLKIT [RTK]:
+  _ It doesn't have to add a lot of packages to get Redux to do anything useful.
+  _ Shorter Code.
+
+- Architecture of Redux:
      <!-- * We will store cart's information in our REDUX STORE. -->
- # TO WRITE DATA:
+
+# TO WRITE DATA:
+
      * REDUX STORE:
          * JS object with lots of data inside it.
          * It is kept in a global central place.
@@ -562,61 +579,137 @@ export default UserContext;
      * SLICES:
           * We make logical partitions
           * These logical partitions are SLICES.
-     * We cannot directly modify Cart in redux: 
+     * We cannot directly modify Cart in redux:
           * To do that we need: DISPATCH an ACTION.
           * ACTION will calls a FUNCTION(REDUCER) which motifies the CART.
           * This REDUCER updates the slice of our REDUX STORE.
 
-  
-  # TO READ DATA:
+# TO READ DATA:
+
      * SELECTOR will read the data and modifiy our react component.
      * The above phenomenon is known as Subscribing to the store.
-  
-  
-  # REDUX Flow:
+
+# REDUX Flow:
+
       Click[Add]-->Dispatches [Action] --> Reducer[Function] -->Store[Slice] -->Subscribes [Selector] --> Updated
 
 # REDUX TOOLKIT:
-   * Install @reduxjs/toolkit and react-redux
-   * Build our own store:
-       import { configureStore } from "@reduxjs/toolkit"
-       appStore.js
-   * Connect our store to our app:
-       import { Provider } from "react-redux";
-    <!-- <Provider store={appStore}>
-    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
-    <div className="app">
-      <Header />
-      {/** Outlet will populate the children from appRoute*/}
-      <Outlet/>
-    </div>
-    </UserContext.Provider>
-    </Provider> -->
-   * Slice (cartSlice)
-      import { createSlice } from "@reduxjs/toolkit"
-        cardSlice.js
-   * dispatch(action)
-   * Selector
-      import { useSelector } from "react-redux";
-       Header.js
+
+- Install @reduxjs/toolkit and react-redux
+- Build our own store:
+  import { configureStore } from "@reduxjs/toolkit"
+  appStore.js
+- Connect our store to our app:
+import { Provider } from "react-redux";
+<!-- <Provider store={appStore}>
+<UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+<div className="app">
+  <Header />
+  {/** Outlet will populate the children from appRoute*/}
+  <Outlet/>
+</div>
+</UserContext.Provider>
+</Provider> -->
+- Slice (cartSlice)
+  import { createSlice } from "@reduxjs/toolkit"
+  cardSlice.js
+- dispatch(action)
+- Selector
+  import { useSelector } from "react-redux";
+  Header.js
 
 # Things to remember in REDUX SUBSCRIBE:
-   * Make sure to subscribe to the right portion of the STORE.
-   * Because this could cause performance loss.
+
+- Make sure to subscribe to the right portion of the STORE.
+- Because this could cause performance loss.
 
 # Things to remember in REDUX REDUCER/REDUCERS:
-   * We only use reducer in appStore.
-   * "reducers" are only used when create slice; But it is exported as reducer.  ; cardSlice.js. 
+
+- We only use reducer in appStore.
+- "reducers" are only used when create slice; But it is exported as reducer. ; cardSlice.js.
 
 # RTK QUERY: READ https://redux-toolkit.js.org/tutorials/rtk-query
-         
+
 # TESTING (DEV Point of View)
 
+- Manual Testing
+  - After developing a feature; check the basic functinality.
+- CODE to perform TESTING.
+
+# Types of testing (developer)
+
+# Unit Testing (important)
+
+# Integration Testing (important)
+
+- End to End Testing - e2e Testing. (cypress/selenium)
+
+# Unit Testing:
+
+- Isolating one component and testing it.
+
+# Intergration Testing:
+
+- Checking the interaction of multipe component which results into a specific output.
+
+# End To End Testing: (cypress/selenium)
+
+- How the user will flow throughout the applicaton.
+
+# SETTING UP TESTING IN OUR APP:
+
+- install React Testing Library.
+  npm install -d @testing-library/react
+- It uses JEST:
+  npm -i -d jest \* It is a JavaScript Testing Framework with a focus on simplicity.
+- Install Babel:
+  npm install --save-dev babel-jest @babel/core @babel/preset-env
+- Configure the babel.config.js from jest website.
+- Configure Parcel Config file to diable BABEL TRANSPILATON
+  - Since PARCEL has its own Babel configuration but incase we need to use our own configuration:
+  - We can choose to DISABLE BABEL TRANSPILATON in PARCEL when using Jest or linters like ESlint.
+  - Read Doc:
+    https://parceljs.org/languages/javascript/#babel
+
+- Jest Configuration:
+  npx jest --init
+
+  - Using Typescript: NO
+  - Choose test environment: jsdom(browser-like)
+    - These test cases don't run on browsers, they would need an environment. which is "jsdom"
+  - Do you want Jest to add coverage reports: Yes
+  - Which provider should be used to instrument code for coverage: BABEL
+  - Automatically clear mock calls, instances, contexts and results before every test: yes
+
+- File would be created for jest.config,js
+# Note: If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately.
+* Install jest-environment-jsdom package:
+   npm install --save-dev jest-environment-jsdom
+     
+# To run test cases:
+
+     * npm run test
+
+# optional to install extension: vscode-icons.
+
+# Format of TEST files:
+  * __test__
+    * _ _ means dunder 
+    * lets say Reserved for test file.
+  * Header.test.js
+  * Header.test.ts
+  * Header.spec.js
+  * Header.spect.js
+
+# Test function format:
+   * it takes two argument:
+      * string
+      * callback function
+   * test("Sum function", () => {
+
+   })
 
 
-  
-
-  
 
 
 
@@ -647,7 +740,6 @@ export default UserContext;
 
 
 
-      
 
 
 
@@ -657,12 +749,6 @@ export default UserContext;
 
 
 
-
-
-  
-
-
-    
 
 
 
