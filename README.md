@@ -685,7 +685,15 @@ import { Provider } from "react-redux";
 # Note: If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately.
 * Install jest-environment-jsdom package:
    npm install --save-dev jest-environment-jsdom
+* Install babel: To make JSX work in test cases.
+     npm i -d @babel/preset-react
+* Include @babel/preset-react inside the babel config (babel.config.js):
+      ['@babel/preset-react', {runtime: 'automatic'}]
+* Install @testing-library/jest-dom
+      1. npm i -D @testing-library/jest-dom
+      2. import "@testing-library/jest-dom" in your testing module.
      
+
 # To run test cases:
 
      * npm run test
@@ -709,7 +717,9 @@ import { Provider } from "react-redux";
 
    })
 
-
+# describe("Contact page test cases", () => {
+  // we can club all test cases under one describe.
+})
 
 
 
