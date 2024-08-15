@@ -717,9 +717,22 @@ import { Provider } from "react-redux";
 
    })
 
+
+# it/test: we can use both 
 # describe("Contact page test cases", () => {
+<!-- 
+it("", () => {
+or
+  test("", () => {
+     
+     return(<Contact/>)
+     //quering:
+       const heading = screen.toGetByRole("heading")
+     //assertion 
+       expect(heading).toBeInTheDocument()
+  })
   // we can club all test cases under one describe.
-})
+}) -->
 
 
 
