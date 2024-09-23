@@ -2,7 +2,9 @@ import { CDN_URL } from "../utils/constants";
 // above is example to import a named export
 const RestroCard = (props) => {
     //destructing 
+
   const {resData} = props;
+  console.log("RestroCard Data",resData)
   // conditional rendering ?.
   const {cloudinaryImageId, name, avgRating, cuisines,costForTwo, sla } = resData?.info;
   //const {deliveryTime} = resData?.info.sla

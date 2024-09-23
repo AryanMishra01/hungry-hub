@@ -734,7 +734,14 @@ or
   // we can club all test cases under one describe.
 }) -->
 
-
+# Important things to import while unit testing:
+ 1. import "@testing-library/jest-dom"
+ 2. import { fireEvent, render, screen } from "@testing-library/react";
+     2.1:  fireEvent: used to click on button
+     2.2:  render: to render the page
+     2.3:  screen: to check on the screen for the text,button
+  EXAMPLES could be seen in Header.test.js file.
+ 3. Make sure to import dependecies of the module in the test file as well.
 
 
 
