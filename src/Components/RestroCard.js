@@ -4,7 +4,7 @@ const RestroCard = (props) => {
     //destructing 
 
   const {resData} = props;
-  console.log("RestroCard Data",resData)
+  //console.log("RestroCard Data",resData)
   // conditional rendering ?.
   const {cloudinaryImageId, name, avgRating, cuisines,costForTwo, sla } = resData?.info;
   //const {deliveryTime} = resData?.info.sla

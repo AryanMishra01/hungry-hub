@@ -1,4 +1,4 @@
-import RestroCard from "../RestroCard"
+import RestroCard, { withPromotedLabel } from "../RestroCard"
 import "@testing-library/jest-dom"
 import {render, screen} from "@testing-library/react"
 import MOCK_DATA from "../mocks/resCardMock.json"
@@ -11,5 +11,8 @@ it("Should render RestroCard component with props", () => {
  })
 
 //  it("Should render RestroCard component with Veg Label", () => {
-//     // test HOC 
-//  })
+//     render(withPromotedLabel)
+
+//     const name = screen.getByLabelText("Veg")
+//     expect(name).toBeInTheDocument();
+//     })

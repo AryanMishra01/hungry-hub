@@ -717,7 +717,7 @@ import { Provider } from "react-redux";
 
    })
 
-
+# UNIT TESTING
 # it/test: we can use both 
 # describe("Contact page test cases", () => {
 <!-- 
@@ -743,10 +743,16 @@ or
   EXAMPLES could be seen in Header.test.js file.
  3. Make sure to import dependecies of the module in the test file as well.
 
+# INTEGRATION TESTING:
+# Creating a dummy fetch function for test case:
+1. global.fetch: It will replace the function.
 
+# To run test automatically on saving test cases write this is package.json
+   "test": "jest",
+    "watch-test": "jest --watch"
+  },
 
-
-
+  
 
 
 
