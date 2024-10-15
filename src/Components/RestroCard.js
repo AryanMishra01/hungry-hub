@@ -10,7 +10,7 @@ const RestroCard = (props) => {
   //const {deliveryTime} = resData?.info.sla
       return (
        //  <div style={styleCard} >
-          <div className="m-4 p-4 w-[250px] rounded-lg shadow-lg bg-gray-100 hover:bg-gray-200">
+          <div data-testid="resCard" className="m-4 p-4 w-[250px] rounded-lg shadow-lg bg-gray-100 hover:bg-gray-200">
               <img className="rounded-lg" alt="restro-logo" src= {CDN_URL + cloudinaryImageId} />
               <h3 className="font-bold py-4 text-lg">{name}</h3>
               <h4>{cuisines.join(", ")}</h4>

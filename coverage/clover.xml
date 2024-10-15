@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1727168306537" clover="3.2.0">
-  <project timestamp="1727168306537" name="All files">
-    <metrics statements="34" coveredstatements="24" conditionals="6" coveredconditionals="4" methods="13" coveredmethods="6" elements="53" coveredelements="34" complexity="0" loc="34" ncloc="34" packages="1" files="2" classes="2"/>
+<coverage generated="1728984833495" clover="3.2.0">
+  <project timestamp="1728984833495" name="All files">
+    <metrics statements="34" coveredstatements="31" conditionals="6" coveredconditionals="4" methods="13" coveredmethods="11" elements="53" coveredelements="46" complexity="0" loc="34" ncloc="34" packages="1" files="2" classes="2"/>
     <file name="Body.js" path="C:\hungry-hub\src\Components\Body.js">
-      <metrics statements="27" coveredstatements="18" conditionals="6" coveredconditionals="4" methods="10" coveredmethods="4"/>
+      <metrics statements="27" coveredstatements="25" conditionals="6" coveredconditionals="4" methods="10" coveredmethods="9"/>
       <line num="10" count="1" type="stmt"/>
-      <line num="12" count="3" type="stmt"/>
-      <line num="13" count="2" type="stmt"/>
-      <line num="14" count="2" type="stmt"/>
-      <line num="16" count="2" type="stmt"/>
-      <line num="22" count="2" type="stmt"/>
-      <line num="23" count="1" type="stmt"/>
-      <line num="26" count="2" type="stmt"/>
-      <line num="27" count="1" type="stmt"/>
-      <line num="31" count="1" type="stmt"/>
-      <line num="33" count="1" type="stmt"/>
-      <line num="35" count="1" type="stmt"/>
-      <line num="38" count="1" type="stmt"/>
-      <line num="97" count="2" type="stmt"/>
-      <line num="98" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="12" count="8" type="stmt"/>
+      <line num="13" count="7" type="stmt"/>
+      <line num="14" count="7" type="stmt"/>
+      <line num="16" count="7" type="stmt"/>
+      <line num="22" count="7" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="26" count="7" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="31" count="2" type="stmt"/>
+      <line num="33" count="2" type="stmt"/>
+      <line num="35" count="2" type="stmt"/>
+      <line num="38" count="2" type="stmt"/>
+      <line num="97" count="7" type="stmt"/>
+      <line num="98" count="7" type="cond" truecount="1" falsecount="1"/>
       <line num="99" count="0" type="stmt"/>
-      <line num="105" count="2" type="stmt"/>
-      <line num="108" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="119" count="0" type="stmt"/>
-      <line num="129" count="0" type="stmt"/>
-      <line num="130" count="0" type="stmt"/>
-      <line num="132" count="0" type="stmt"/>
-      <line num="143" count="0" type="stmt"/>
-      <line num="144" count="0" type="stmt"/>
-      <line num="146" count="0" type="stmt"/>
-      <line num="159" count="0" type="stmt"/>
-      <line num="166" count="8" type="stmt"/>
+      <line num="105" count="7" type="stmt"/>
+      <line num="108" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="120" count="1" type="stmt"/>
+      <line num="130" count="1" type="stmt"/>
+      <line num="131" count="8" type="stmt"/>
+      <line num="133" count="1" type="stmt"/>
+      <line num="144" count="1" type="stmt"/>
+      <line num="145" count="8" type="stmt"/>
+      <line num="147" count="1" type="stmt"/>
+      <line num="160" count="0" type="stmt"/>
+      <line num="167" count="31" type="stmt"/>
     </file>
     <file name="RestroCard.js" path="C:\hungry-hub\src\Components\RestroCard.js">
       <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <line num="3" count="2" type="stmt"/>
-      <line num="6" count="9" type="stmt"/>
-      <line num="9" count="9" type="stmt"/>
-      <line num="11" count="9" type="stmt"/>
+      <line num="6" count="32" type="stmt"/>
+      <line num="9" count="32" type="stmt"/>
+      <line num="11" count="32" type="stmt"/>
       <line num="30" count="2" type="stmt"/>
-      <line num="32" count="2" type="stmt"/>
+      <line num="32" count="7" type="stmt"/>
       <line num="33" count="0" type="stmt"/>
     </file>
   </project>

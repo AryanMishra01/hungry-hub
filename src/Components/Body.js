@@ -113,6 +113,7 @@ const Body = () => {
         <div className="search m-2 p-2">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid: border-black shadow-md p-1"
             value={searchText}
             onChange={(e) => {
@@ -141,7 +142,7 @@ const Body = () => {
             className="px-3 py-2 font-medium bg-sky-200 hover:bg-sky-700 rounded-lg shadow-md"
             onClick={() => {
               const filteredList = listOfRes.filter(
-                (res) => res.info.avgRating > 4.4
+                (res) => res.info.avgRating > 4.3
               );
               setFilteredRes(filteredList);
               // console.log("Top filtered", filteredList);

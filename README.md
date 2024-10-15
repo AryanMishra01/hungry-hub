@@ -744,14 +744,22 @@ or
  3. Make sure to import dependecies of the module in the test file as well.
 
 # INTEGRATION TESTING:
-# Creating a dummy fetch function for test case:
+# Creating a dummy/mock fetch function for test case:
 1. global.fetch: It will replace the function.
 
-# To run test automatically on saving test cases write this is package.json
+# To run test automatically on saving test cases write this is package.json under "scripts"
    "test": "jest",
     "watch-test": "jest --watch"
   },
 
+# import { act } from "react"
+ 1. act returns a promise.
+ 2. act is a function which takes an async callback function 
+ 3. this will return render and this render will render your body component. 
+  
+# getByTestId
+ 1. we can provide data-testid attribute to element for testing which could be read by jest.
+    e.g.  data-testid="searchInput"
   
 
 
