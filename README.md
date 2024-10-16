@@ -760,6 +760,13 @@ or
 # getByTestId
  1. we can provide data-testid attribute to element for testing which could be read by jest.
     e.g.  data-testid="searchInput"
+
+# beforeAll, beforeEach, AfterEach, AfterAll test cases.
+
+# Good Practice for testing is: Mininum of 80 to 90 percentage.
+
+
+
   
 
 
